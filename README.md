@@ -1,4 +1,4 @@
-# Simple Validator File
+# Simple Validator
 Use for PHP Validation
 
 ## Description
