@@ -1,13 +1,13 @@
 # Simple Validator
 Use for PHP Validation
 
-## Description
+# Description
 ```php
 validate(array $_POST, array $fields, array $rules [,array $messages]) :array
 ```
 Validate Data
 
-### Parameters
+# Parameters
 <ul>
     <li><code>$_POST</code> Form Data</li>
     <li><code>$fields</code> Validation Fields</li>
@@ -15,10 +15,10 @@ Validate Data
     <li><code>$messages</code> <i>(optional)</i> Validation Messages</li>
 </ul>
 
-#### Return Values
+# Return Values
 Return <code>NULL</code> if no validation error
 
-##### Usage
+# Usage
 
 Include the Validator File
 ```php
@@ -53,7 +53,7 @@ $messages = [
 ```
 
 
-##### Example
+# Example
 ```bash
 $ php -S localhost:8000
 ```
