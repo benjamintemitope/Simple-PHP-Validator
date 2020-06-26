@@ -67,6 +67,11 @@ $errors = [];
                                         return addError($field, $messages[$field][$rule]);
                                     }
                                 break;
+                                case 'numeric':
+                                    if(!ctype_digit($field_value)){
+                                        return addError($field, $messages[$field][$rule]);
+                                    }
+                                break;
                             }
                         }       
                     }else {
@@ -110,6 +115,11 @@ $errors = [];
                             case 'string':
                                 if (!is_string($field_value)) {
                                     return addError($field, ucwords($field). ' must be a string. ');
+                                }
+                            break;
+                            case 'numeric':
+                                if(!ctype_digit($field_value)){
+                                    return addError($field, ucwords($field). ' should be numeric');
                                 }
                             break;
                         }
