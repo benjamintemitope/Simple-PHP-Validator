@@ -5,7 +5,7 @@ Use for PHP Validation
 ```php
 validate(array $_POST, array $fields, array $rules [,array $messages]) :array
 ```
-Validate Data
+validates Data
 
 # Parameters
 <ul>
