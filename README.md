@@ -15,7 +15,7 @@ Validate Data
     <li><code>$messages</code> <i>(optional)</i> Validation Messages</li>
 </ul>
 
-# Return Values
+# Return value
 Return <code>NULL</code> if no validation error
 
 # Usage
@@ -54,6 +54,11 @@ $messages = [
 
 
 # Example
+
+```php
+validate($_POST, $fields, $rules, $messages);
+```
+
 ```bash
 $ php -S localhost:8000
 ```
