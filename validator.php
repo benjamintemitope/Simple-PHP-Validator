@@ -40,13 +40,15 @@ $errors = [];
 
                                 case 'min':
                                     if (strlen($field_value) < $rule_value) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        $message = str_replace(':min', $rule_value, $messages[$field][$rule]);
+                                        return addError($field, $message);
                                     }
                                 break;
 
                                 case 'max':
                                     if (strlen($field_value) > $rule_value) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        $message = str_replace(':max', $rule_value, $messages[$field][$rule]);
+                                        return addError($field, $message);
                                     }
                                 break;
 
