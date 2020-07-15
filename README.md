@@ -83,7 +83,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 ```
 <a href="#rules">Back To Top</a>
 
-<h1 id="email">Required</h1>
+<h1 id="email">Email</h1>
 
 ```php
     'user_email' => ['email']
