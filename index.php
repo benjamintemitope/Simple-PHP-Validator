@@ -20,12 +20,12 @@ $_POST['password'] = "password";
 $messages = [
     'username' => [
         'required' => "Username is required.",
-        'min' => "Username should be minimum of 3 characters."
+        'min' => "Username should be minimum of :min characters."
     ],
     'password' => [
         'required' => "Password is required.",
-        'min' => "Password should be minimum of 5 characters."
+        'min' => "Password should be minimum of :max characters."
     ]
 ];
 
-var_dump(validate($_POST, $fields, $rules, $messages));
+var_dump(validate($_POST, $fields, $rules, $messages)); //NULL
