@@ -47,7 +47,7 @@ $messages = [
     ],
     'password' => [
         'required' => "Password is required.",
-        'email' => "Password must be a valid Email Address."
+        'min' => "Password should be minimum of :min characters."
     ]
 ];
 ```
