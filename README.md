@@ -79,55 +79,55 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 <h1 id="required">Required</h1>
 
 ```php
-    'username' => ['required']
+'username' => ['required']
 ```
 <a href="#rules">Back To Top</a>
 
 <h1 id="email">Email</h1>
 
 ```php
-    'user_email' => ['email']
+'user_email' => ['email']
 ```
 <a href="#rules">Back To Top</a>
 
 <h1 id="min">Min</h1>
 
 ```php
-    'password' => ['min' => 6]
+'password' => ['min' => 6]
 ```
 <a href="#rules">Back To Top</a>
 
 <h1 id="max">Max</h1>
 
 ```php
-    'password' => ['max' => 25]
+'password' => ['max' => 25]
 ```
 <a href="#rules">Back To Top</a>
 
 <h1 id="alpha">Alpha</h1>
 
 ```php
-    'name' => ['alpha']
+'name' => ['alpha']
 ```
 <a href="#rules">Back To Top</a>
 
 <h1 id="alphanumberic">Alphanumberic</h1>
 
 ```php
-    'username' => ['alphanumberic']
+'username' => ['alphanumberic']
 ```
 <a href="#rules">Back To Top</a>
 
 <h1 id="string">String</h1>
 
 ```php
-    'address' => ['string']
+'address' => ['string']
 ```
 <a href="#rules">Back To Top</a>
 
 <h1 id="numeric">Numeric</h1>
 
 ```php
-    'phone_number' => ['numeric']
+'phone_number' => ['numeric']
 ```
 <a href="#rules">Back To Top</a>
