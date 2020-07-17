@@ -43,7 +43,7 @@ Custom Messages for Validation
 $messages = [
     'username' => [
         'required' => "Username is required.",
-        'min' => "Username should be minimum of 3 characters."
+        'min' => "Username should be minimum of :min characters."
     ],
     'password' => [
         'required' => "Password is required.",
