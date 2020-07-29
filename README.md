@@ -52,8 +52,11 @@ $messages = [
         'max' => "Password should be maximum of :max characters."
     ]
 ];
+
+var_dump(validate($_POST, $fields, $rules, $messages));
 ```
 
+## Run Server
 ```bash
 $ php -S localhost:8000
 ```
