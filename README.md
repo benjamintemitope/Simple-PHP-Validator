@@ -1,13 +1,13 @@
-# Simple Validator
+# Simple Validator File
 Use for PHP Validation
 
-# Description
+## Description
 ```php
 validate(array $_POST, array $fields, array $rules [,array $messages]) :array
 ```
-validates Data
+Validate Data
 
-# Parameters
+## Parameters
 <ul>
     <li><code>$_POST</code> Form Data</li>
     <li><code>$fields</code> Validation Fields</li>
@@ -15,31 +15,32 @@ validates Data
     <li><code>$messages</code> <i>(optional)</i> Validation Messages</li>
 </ul>
 
-# Return value
-Return <code>NULL</code> if no validation error
+## Return Values
+Return Array
 
-# Usage
-
-Include the Validator File
+## Example
 ```php
+//Include the Validator File
 include 'validator.php';
-```
 
-Fields required for validation. e.g
-```php 
+//POST Fields
+$_POST['username'] = "jo";
+$_POST['password'] = "password";
+
+//Fields required for validation.
 $fields = ['username', 'password'];
-```
 
-Rules for validation
-```php
+//Rules for validation
 $rules = [
-    'username' => ['required', 'min' => 3],
-    'password' => ['required', 'min' => 5]
+    'username' => [
+        'required', 'min' => 3
+    ],
+    'password' => [
+        'required', 'min' => 5, 'max' => 15
+    ]
 ];
-```
 
-Custom Messages for Validation
-```php 
+//Custom Messages for Validation
 $messages = [
     'username' => [
         'required' => "Username is required.",
@@ -47,16 +48,10 @@ $messages = [
     ],
     'password' => [
         'required' => "Password is required.",
-        'min' => "Password should be minimum of :min characters."
+        'min' => "Password should be minimum of :min characters.",
+        'max' => "Password should be maximum of :max characters."
     ]
 ];
-```
-
-
-# Example
-
-```php
-validate($_POST, $fields, $rules, $messages);
 ```
 
 ```bash
@@ -64,70 +59,15 @@ $ php -S localhost:8000
 ```
 Now you can visit [http://localhost:8000/](http://localhost:8000/) in your browser to view the output of this example.
 
-# Rules
+# Rules Available
 <ul id="rules">
-    <li><a href="#required">Required</a></li>
-    <li><a href="#email">Email</a></li>
-    <li><a href="#min">Min</a></li>
-    <li><a href="#max">Max</a></li>
-    <li><a href="#alpha">Alpha</a></li>
-    <li><a href="#alphanumberic">Alphanumberic</a></li>
-    <li><a href="#string">String</a></li>
-    <li><a href="#numeric">Numeric</a></li>
+    <li>Required</li>
+    <li>Email</li>
+    <li>Min</li>
+    <li>Max</li>
+    <li>Alpha</li>
+    <li>Alphanumeric</li>
+    <li>Array</li>
+    <li>String</li>
+    <li>Numeric</li>
 </ul>
-
-<h1 id="required">Required</h1>
-
-```php
-'username' => ['required']
-```
-<a href="#rules">Back To Top</a>
-
-<h1 id="email">Email</h1>
-
-```php
-'user_email' => ['email']
-```
-<a href="#rules">Back To Top</a>
-
-<h1 id="min">Min</h1>
-
-```php
-'password' => ['min' => 6]
-```
-<a href="#rules">Back To Top</a>
-
-<h1 id="max">Max</h1>
-
-```php
-'password' => ['max' => 25]
-```
-<a href="#rules">Back To Top</a>
-
-<h1 id="alpha">Alpha</h1>
-
-```php
-'name' => ['alpha']
-```
-<a href="#rules">Back To Top</a>
-
-<h1 id="alphanumberic">Alphanumberic</h1>
-
-```php
-'username' => ['alphanumberic']
-```
-<a href="#rules">Back To Top</a>
-
-<h1 id="string">String</h1>
-
-```php
-'address' => ['string']
-```
-<a href="#rules">Back To Top</a>
-
-<h1 id="numeric">Numeric</h1>
-
-```php
-'phone_number' => ['numeric']
-```
-<a href="#rules">Back To Top</a>
