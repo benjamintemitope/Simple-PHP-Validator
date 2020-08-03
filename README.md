@@ -7,7 +7,7 @@ validate(array $_POST, array $fields, array $rules [,array $messages]) :array
 ```
 Validate Data
 
-### Parameters
+## Parameters
 <ul>
     <li><code>$_POST</code> Form Data</li>
     <li><code>$fields</code> Validation Fields</li>
@@ -15,47 +15,110 @@ Validate Data
     <li><code>$messages</code> <i>(optional)</i> Validation Messages</li>
 </ul>
 
-#### Return Values
-Return <code>NULL</code> if no validation error
-
-##### Usage
-
-Include the Validator File
+## Return Values
 ```php
+array
+```
+
+## Example
+```php
+//Include the Validator File
 include 'validator.php';
-```
 
-Fields required for validation. e.g
-```php 
+//POST Fields
+$_POST['username'] = "jo";
+$_POST['password'] = "password";
+
+//Fields required for validation.
 $fields = ['username', 'password'];
-```
 
-Rules for validation
-```php
+//Rules for validation
 $rules = [
-    'username' => ['required', 'min' => 3],
-    'password' => ['required', 'min' => 5]
+    'username' => [
+        'required', 'min' => 3
+    ],
+    'password' => [
+        'required', 'min' => 5, 'max' => 15
+    ]
 ];
-```
 
-Custom Messages for Validation
-```php 
+//Custom Messages for Validation
 $messages = [
     'username' => [
         'required' => "Username is required.",
-        'min' => "Username should be minimum of 3 characters."
+        'min' => "Username should be minimum of :min characters."
     ],
     'password' => [
         'required' => "Password is required.",
-        'email' => "Password must be a valid Email Address."
+        'min' => "Password should be minimum of :min characters.",
+        'max' => "Password should be maximum of :max characters."
     ]
 ];
+
+var_dump(validate($_POST, $fields, $rules, $messages));
 ```
 
-
-##### Example
+## Run Server
 ```bash
 $ php -S localhost:8000
 ```
 Now you can visit [http://localhost:8000/](http://localhost:8000/) in your browser to view the output of this example.
 
+# Rules Available
+
+<table>
+    <tr>
+        <th>Rule</th>
+        <th>Usage</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>Required</td>
+            <td><code>required</code></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><code>email</code></td>
+        </tr>
+        <tr>
+            <td>Minimum</td>
+            <td><code>min => <i>value</i></code></td>
+        </tr>
+        <tr>
+            <td>Maximum</td>
+            <td><code>max => <i>value</i></code></td>
+        </tr>
+        <tr>
+            <td>Alphabetic</td>
+            <td><code>alpha</code></td>
+        </tr>
+        <tr>
+            <td>Alphanumeric</td>
+            <td><code>alphanum</code></td>
+        </tr>
+        <tr>
+            <td>Array</td>
+            <td><code>array</code></td>
+        </tr>
+        <tr>
+            <td>String</td>
+            <td><code>string</code></td>
+        </tr>
+        <tr>
+            <td>Numeric</td>
+            <td><code>num</code></td>
+        </tr>
+        <tr>
+            <td>Lowercase</td>
+            <td><code>lower</code></td>
+        </tr>
+        <tr>
+            <td>Uppercase</td>
+            <td><code>upper</code></td>
+        </tr>
+        <tr>
+            <td>Hexadecimal</td>
+            <td><code>hexadec</code></td>
+        </tr>
+    </tbody>
+</table>

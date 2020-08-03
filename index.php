@@ -1,31 +1,35 @@
 <?php 
 
-// Include Validator File
+//Include the Validator File
 include 'validator.php';
 
-//fields required for the submission
-$fields = ['username', 'password'];
-
-//rules for the validation
-$rules = [
-    'username' => ['required', 'min' => 3],
-    'password' => ['required', 'min' => 5]
-];
-
 //POST Fields
-$_POST['username'] = "johndoe";
+$_POST['username'] = "jo";
 $_POST['password'] = "password";
 
-//Custom message for validation
-$messages = [
+//Fields required for validation.
+$fields = ['username', 'password'];
+
+//Rules for validation
+$rules = [
     'username' => [
-        'required' => "Username is required.",
-        'min' => "Username should be minimum of 3 characters."
+        'required', 'min' => 3
     ],
     'password' => [
-        'required' => "Password is required.",
-        'min' => "Password should be minimum of 5 characters."
+        'required', 'min' => 5, 'max' => 15
     ]
 ];
 
+//Custom Messages for Validation
+$messages = [
+    'username' => [
+        'required' => "Username is required.",
+        'min' => "Username should be minimum of :min characters."
+    ],
+    'password' => [
+        'required' => "Password is required.",
+        'min' => "Password should be minimum of :min characters.",
+        'max' => "Password should be maximum of :max characters."
+    ]
+];
 var_dump(validate($_POST, $fields, $rules, $messages));
