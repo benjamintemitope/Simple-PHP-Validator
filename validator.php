@@ -134,7 +134,11 @@ $errors = [];
                                 }
                             break;
 
+<<<<<<< HEAD
                             case 'alphanum':
+=======
+                            case 'alphanumeric':
+>>>>>>> e277798b3175a522dc045c504c2adaa3fda43d0b
                                 if (!ctype_alnum($field_value)) {
                                     return addError($field, ucwords($field). ' should be alphanumeric characters');
                                 }

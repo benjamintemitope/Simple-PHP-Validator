@@ -16,9 +16,13 @@ Validate Data
 </ul>
 
 ## Return Values
+<<<<<<< HEAD
 ```php
 array
 ```
+=======
+Return Array
+>>>>>>> e277798b3175a522dc045c504c2adaa3fda43d0b
 
 ## Example
 ```php
@@ -65,6 +69,7 @@ $ php -S localhost:8000
 Now you can visit [http://localhost:8000/](http://localhost:8000/) in your browser to view the output of this example.
 
 # Rules Available
+<<<<<<< HEAD
 
 <table>
     <tr>
@@ -122,3 +127,16 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
         </tr>
     </tbody>
 </table>
+=======
+<ul id="rules">
+    <li>Required</li>
+    <li>Email</li>
+    <li>Min</li>
+    <li>Max</li>
+    <li>Alpha</li>
+    <li>Alphanumeric</li>
+    <li>Array</li>
+    <li>String</li>
+    <li>Numeric</li>
+</ul>
+>>>>>>> e277798b3175a522dc045c504c2adaa3fda43d0b
