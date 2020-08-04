@@ -19,9 +19,6 @@ Validate Data
 ```php
 array
 ```
-=======
-Return Array
->>>>>>> e277798b3175a522dc045c504c2adaa3fda43d0b
 
 ## Example
 ```php
