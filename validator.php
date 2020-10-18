@@ -1,5 +1,7 @@
 <?php
+
 $errors = [];
+
     function validate(array $data, array $fields, array $rules, array $messages = [])
     {
         foreach ($fields as $field) {
@@ -28,20 +30,20 @@ $errors = [];
                             switch ($rule) {
                                 case 'required':
                                     if (empty($field_value)) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        addError($field, $messages[$field][$rule]);
                                     }
                                 break;
 
                                 case 'email':
                                     if (!filter_var($field_value, FILTER_VALIDATE_EMAIL)){
-                                        return addError($field, $messages[$field][$rule]);
+                                        addError($field, $messages[$field][$rule]);
                                     }
                                 break;
 
                                 case 'min':
                                     if (strlen($field_value) < $rule_value) {
                                         $message = str_replace(':min', $rule_value, $messages[$field][$rule]);
-                                        return addError($field, $message);
+                                        addError($field, $message);
                                         
                                     }
                                 break;
@@ -49,55 +51,55 @@ $errors = [];
                                 case 'max':
                                     if (strlen($field_value) > $rule_value) {
                                         $message = str_replace(':max', $rule_value, $messages[$field][$rule]);
-                                        return addError($field, $message);
+                                        addError($field, $message);
                                     }
                                 break;
 
                                 case 'alpha':
                                     if (!ctype_alpha($field_value)) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        addError($field, $messages[$field][$rule]);
                                     }
                                 break;
 
                                 case 'alphanumeric':
                                     if (!ctype_alnum($field_value)) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        addError($field, $messages[$field][$rule]);
                                     }
                                 break;
 
                                 case 'array':
                                     if (!is_array($field_value)) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        addError($field, $messages[$field][$rule]);
                                     }
                                 break;
 
                                 case 'string':
                                     if (!is_string($field_value)) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        addError($field, $messages[$field][$rule]);
                                     }
                                 break;
 
                                 case 'num':
                                     if (!ctype_digit ($field_value)) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        addError($field, $messages[$field][$rule]);
                                     }
                                 break;
 
                                 case 'lower':
                                     if (!ctype_lower($field_value)) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        addError($field, $messages[$field][$rule]);
                                     }    
                                 break;
 
                                 case 'upper':
                                     if (!ctype_upper($field_value)) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        addError($field, $messages[$field][$rule]);
                                     }    
                                 break;
 
                                 case 'hexadec':
                                     if (!ctype_xdigit($field_value)) {
-                                        return addError($field, $messages[$field][$rule]);
+                                        addError($field, $messages[$field][$rule]);
                                     }    
                                 break;
                             }
@@ -106,89 +108,91 @@ $errors = [];
                         switch ($rule) {
                             case 'required':
                                 if (empty($field_value)) {
-                                    return addError($field, ucwords($field). ' is required');
+                                    addError($field, ucwords($field). ' is required');
                                 }
                             break;
 
                             case 'email':
                                 if (!filter_var($field_value, FILTER_VALIDATE_EMAIL)){
-                                    return addError($field, ucwords($field). ' must be a valid email. ');
+                                    addError($field, ucwords($field). ' must be a valid email. ');
                                 }
                             break;
 
                             case 'min':
                                 if (strlen($field_value) < $rule_value) {
-                                    return addError($field, ucwords($field). ' should be minimum of '.$rule_value. ' characters');
+                                    addError($field, ucwords($field). ' should be minimum of '.$rule_value. ' characters');
                                 }
                             break;
 
                             case 'max':
                                 if (strlen($field_value) > $rule_value) {
-                                    return addError($field, ucwords($field). ' should be maximum of '.$rule_value. ' characters');
+                                    addError($field, ucwords($field). ' should be maximum of '.$rule_value. ' characters');
                                 }
                             break;
 
                             case 'alpha':
                                 if (!ctype_alpha($field_value)) {
-                                    return addError($field, ucwords($field). ' should be alphabetic characters');
+                                    addError($field, ucwords($field). ' should be alphabetic characters');
                                 }
                             break;
-
-<<<<<<< HEAD
-                            case 'alphanum':
-=======
+                            
                             case 'alphanumeric':
->>>>>>> e277798b3175a522dc045c504c2adaa3fda43d0b
                                 if (!ctype_alnum($field_value)) {
-                                    return addError($field, ucwords($field). ' should be alphanumeric characters');
+                                    addError($field, ucwords($field). ' should be alphanumeric characters');
                                 }
                             break;
 
                             case 'array':
                                 if (!is_array($field_value)) {
-                                    return addError($field, ucwords($field). ' should be an array.');
+                                    addError($field, ucwords($field). ' should be an array.');
                                 }
                             break;
 
                             case 'string':
                                 if (!is_string($field_value)) {
-                                    return addError($field, ucwords($field). ' must be a string. ');
+                                    addError($field, ucwords($field). ' must be a string. ');
                                 }
                             break;
 
                             case 'num':
                                 if (!ctype_digit($field_value)) {
-                                    return addError($field, ucwords($field). ' must be a numeric character. ');
+                                    addError($field, ucwords($field). ' must be a numeric character. ');
                                 }
                             break;
 
                             case 'lower':
                                     if (!ctype_lower($field_value)) {
-                                        return addError($field, ucwords($field). ' must be in lowercase characters. ');
+                                        addError($field, ucwords($field). ' must be in lowercase characters. ');
                                     }    
                             break;
 
                             case 'upper':
                                 if (!ctype_upper($field_value)) {
-                                    return addError($field, ucwords($field). ' must be in uppercase characters. ');
+                                    addError($field, ucwords($field). ' must be in uppercase characters. ');
                                 }    
                             break;
 
                             case 'hexadec':
                                 if (!ctype_xdigit($field_value)) {
-                                    return addError($field, ucwords($field). ' must be in hexadecimal digits. ');
+                                    addError($field, ucwords($field). ' must be in hexadecimal digits. ');
                                 }    
                             break;
+                            
                         }
                     }
                 }
             }
         }
+
+        global $errors;
+        if (!empty($errors)) {
+            http_response_code(422);
+        }
+        return $errors;
     }
 
     function addError($field, $error)
     {
-        http_response_code(422);
+        global $errors;
         $errors[$field] = $error;
-        return $errors;
     }
