@@ -3,7 +3,7 @@ Use for PHP Validation
 
 ## Description
 ```php
-validate(array $_POST, array $fields, array $rules [,array $messages]) :array
+validate(array $_POST, array $fields, array $rules [,array $messages]) :array|bool
 ```
 Validate Data
 
@@ -26,23 +26,27 @@ array
 include 'validator.php';
 
 //POST Fields
-$_POST['username'] = "jo";
-$_POST['email'] = "johndoe@example.";
-$_POST['password'] = "pad";
+$_POST['username'] = "j";
+$_POST['email'] = "johndoe@example";
+$_POST['password'] = "pass";
+$_POST['remember_me'] = "";
 
 //Fields required for validation.
-$fields = ['username', 'email','password'];
+$fields = ['username', 'email','password', 'remember_me'];
 
 //Rules for validation
 $rules = [
     'username' => [
-        'required', 'array', 'min' => 3
+        'required', 'min' => 3
     ],
     'email' => [
         'required', 'email'
     ],
     'password' => [
         'required', 'min' => 5, 'max' => 15
+    ],
+    'remember_me' => [
+      'numeric', 'nullable'
     ]
 ];
 
@@ -62,12 +66,19 @@ $messages = [
         'max' => "Password should be maximum of :max characters."
     ]
 ];
-print_r(validate($_POST, $fields, $rules, $messages));
+
+$errors = validate($_POST, $fields, $rules, $messages);
+
+if (!empty($errors)) {
+    echo '<pre> '. print_r($errors, true ) .'</pre>';exit;
+}
+
+echo "No error found!.";
 ```
 
 ## Run Server
 ```bash
-$ php -S localhost:8000
+php -S localhost:8000
 ```
 Now you can visit [http://localhost:8000/](http://localhost:8000/) in your browser to view the output of this example.
 
@@ -112,7 +123,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
         </tr>
         <tr>
             <td>Numeric</td>
-            <td><code>num</code></td>
+            <td><code>numeric</code></td>
         </tr>
         <tr>
             <td>Lowercase</td>
@@ -126,5 +137,11 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
             <td>Hexadecimal</td>
             <td><code>hexadec</code></td>
         </tr>
+        <tr>
+            <td>Nullable</td>
+            <td><code>nullable</code></td>
+        </tr>
     </tbody>
 </table>
+
+> When using the `nullable` rule, let it be the last rule assigned to the field.

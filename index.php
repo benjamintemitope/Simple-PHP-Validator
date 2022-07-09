@@ -4,23 +4,27 @@
 include 'validator.php';
 
 //POST Fields
-$_POST['username'] = "jo";
-$_POST['email'] = "johndoe@example.";
-$_POST['password'] = "pad";
+$_POST['username'] = "j";
+$_POST['email'] = "johndoe@example";
+$_POST['password'] = "pass";
+$_POST['remember_me'] = "";
 
 //Fields required for validation.
-$fields = ['username', 'email','password'];
+$fields = ['username', 'email','password', 'remember_me'];
 
 //Rules for validation
 $rules = [
     'username' => [
-        'required', 'array', 'min' => 3
+        'required', 'min' => 3
     ],
     'email' => [
         'required', 'email'
     ],
     'password' => [
         'required', 'min' => 5, 'max' => 15
+    ],
+    'remember_me' => [
+      'numeric', 'nullable'
     ]
 ];
 
@@ -40,4 +44,11 @@ $messages = [
         'max' => "Password should be maximum of :max characters."
     ]
 ];
-print_r(validate($_POST, $fields, $rules, $messages));
+
+$errors = validate($_POST, $fields, $rules, $messages);
+
+if (!empty($errors)) {
+    echo '<pre> '. print_r($errors, true ) .'</pre>';exit;
+}
+
+echo "No error found!.";
