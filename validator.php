@@ -24,6 +24,12 @@ function validate(array $data, array $fields, array $rules, array $messages = []
                     $rule = $rule_value;
                 }
 
+                if ($rule == 'nullable') {
+                    if (empty($field_value)) {
+                        break;
+                    }
+                }
+
                 // If Custom Message exist for validation
                 if (key_exists($field, $messages) && key_exists($rule, $messages[$field])) {
                     foreach ($messages[$field] as $message => $message_value){
@@ -103,13 +109,6 @@ function validate(array $data, array $fields, array $rules, array $messages = []
                                     addError($field, $messages[$field][$rule]);
                                 }    
                                 break;
-
-                            case 'nullable':
-                                if (empty($field_value)) {
-                                    global $errors;
-                                    unset($errors[$field]);
-                                }
-                                break;
                         }
                     }       
                 }else {
@@ -184,13 +183,6 @@ function validate(array $data, array $fields, array $rules, array $messages = []
                             if (!ctype_xdigit($field_value)) {
                                 addError($field, ucwords($field). ' must be in hexadecimal digits. ');
                             }    
-                            break;
-
-                        case 'nullable':
-                            if (empty($field_value)) {
-                                global $errors;
-                                unset($errors[$field]);
-                            }
                             break;
                     }
                 }

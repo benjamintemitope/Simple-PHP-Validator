@@ -24,7 +24,7 @@ $rules = [
         'required', 'min' => 5, 'max' => 15
     ],
     'remember_me' => [
-      'numeric', 'nullable'
+      'nullable', 'numeric'
     ]
 ];
 

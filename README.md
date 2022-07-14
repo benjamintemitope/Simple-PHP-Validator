@@ -46,7 +46,7 @@ $rules = [
         'required', 'min' => 5, 'max' => 15
     ],
     'remember_me' => [
-      'numeric', 'nullable'
+      'nullable', 'numeric'
     ]
 ];
 
@@ -144,4 +144,4 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
     </tbody>
 </table>
 
-> When using the `nullable` rule, let it be the last rule assigned to the field.
+> When using the `nullable` rule, let it be the first rule assigned to the field.
