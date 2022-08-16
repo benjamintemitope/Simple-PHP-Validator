@@ -1,18 +1,18 @@
 <?php 
 
-//Include the Validator File
-include 'validator.php';
+// validator
+require_once __DIR__ . '/validator.php';
 
-//POST Fields
+// data
 $_POST['username'] = "j";
 $_POST['email'] = "johndoe@example";
 $_POST['password'] = "pass";
 $_POST['remember_me'] = "";
 
-//Fields required for validation.
+// fields
 $fields = ['username', 'email','password', 'remember_me'];
 
-//Rules for validation
+// rules
 $rules = [
     'username' => [
         'required', 'min' => 3
@@ -24,11 +24,11 @@ $rules = [
         'required', 'min' => 5, 'max' => 15
     ],
     'remember_me' => [
-      'nullable', 'numeric'
+      'nullable'
     ]
 ];
 
-//Custom Messages for Validation
+// custom error messages
 $messages = [
     'username' => [
         'required' => "Username is required.",

@@ -22,19 +22,19 @@ array
 
 ## Example
 ```php
-//Include the Validator File
-include 'validator.php';
+// validator
+require_once __DIR__ . '/validator.php';
 
-//POST Fields
+// data
 $_POST['username'] = "j";
 $_POST['email'] = "johndoe@example";
 $_POST['password'] = "pass";
 $_POST['remember_me'] = "";
 
-//Fields required for validation.
+// fields
 $fields = ['username', 'email','password', 'remember_me'];
 
-//Rules for validation
+// rules
 $rules = [
     'username' => [
         'required', 'min' => 3
@@ -46,11 +46,11 @@ $rules = [
         'required', 'min' => 5, 'max' => 15
     ],
     'remember_me' => [
-      'nullable', 'numeric'
+      'nullable'
     ]
 ];
 
-//Custom Messages for Validation
+// custom error messages
 $messages = [
     'username' => [
         'required' => "Username is required.",
@@ -78,7 +78,7 @@ echo "No error found!.";
 
 ## Run Server
 ```bash
-php -S localhost:8000
+php -S localhost:8000 -t src/
 ```
 Now you can visit [http://localhost:8000/](http://localhost:8000/) in your browser to view the output of this example.
 
@@ -144,4 +144,6 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
     </tbody>
 </table>
 
+# Notes
 > When using the `nullable` rule, let it be the first rule assigned to the field.
+> `numeric` rule works effectively with string. [https://php.net/manual/en/function.ctype-digit.php](Why?)

@@ -14,10 +14,14 @@ function validate(array $data, array $fields, array $rules, array $messages = []
             foreach ($rules[$field] as $rule => $rule_value) {
                 if (is_array($field_value)) {
                     foreach ($field_value as $value) {
-                        $field_value[] = trim(htmlspecialchars($value));
+                        if (is_string($value)) {
+                            $field_value[] = trim(htmlspecialchars($value));
+                        }
                     }
                 } else {
-                    $field_value = trim(htmlspecialchars($field_value));
+                    if (is_string($field_value)) {
+                        $field_value = trim(htmlspecialchars($field_value));
+                    }
                 }
 
                 if (is_int($rule)) {
@@ -51,7 +55,6 @@ function validate(array $data, array $fields, array $rules, array $messages = []
                                 if (strlen($field_value) < $rule_value) {
                                     $message = str_replace(':min', $rule_value, $messages[$field][$rule]);
                                     addError($field, $message);
-                                    
                                 }
                                 break;
 
@@ -87,6 +90,8 @@ function validate(array $data, array $fields, array $rules, array $messages = []
                                 break;
 
                             case 'numeric':
+                                // As of PHP 8.1.0 ctype_digit works effectively with string
+                                $field_value = (string) $field_value;
                                 if (!ctype_digit ($field_value)) {
                                     addError($field, $messages[$field][$rule]);
                                 }
@@ -162,15 +167,17 @@ function validate(array $data, array $fields, array $rules, array $messages = []
                             break;
 
                         case 'numeric':
+                            // As of PHP 8.1.0 ctype_digit works effectively with string
+                            $field_value = (string) $field_value;
                             if (!ctype_digit($field_value)) {
                                 addError($field, ucwords($field). ' must be a numeric character. ');
                             }
                             break;
 
                         case 'lower':
-                                if (!ctype_lower($field_value)) {
-                                    addError($field, ucwords($field). ' must be in lowercase characters. ');
-                                }    
+                            if (!ctype_lower($field_value)) {
+                                addError($field, ucwords($field). ' must be in lowercase characters. ');
+                            }    
                             break;
 
                         case 'upper':
