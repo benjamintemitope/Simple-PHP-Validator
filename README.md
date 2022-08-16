@@ -145,5 +145,7 @@ Now you can visit [http://localhost:8000/](http://localhost:8000/) in your brows
 </table>
 
 # Notes
-> When using the `nullable` rule, let it be the first rule assigned to the field.
-> `numeric` rule works effectively with string. [https://php.net/manual/en/function.ctype-digit.php](Why?)
+
+- When using the `nullable` rule, let it be the first rule assigned to the field.
+
+- `numeric` rule works effectively with string. [Why?](https://php.net/manual/en/function.ctype-digit.php)
